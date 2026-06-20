@@ -1,2 +1,2 @@
-Drop your profile photo here as img/me.jpg, and the four poster JPGs in img/posters/.
-Then tell me your Letterboxd username and I will wire them into the page.
+Profile photo: drop yours in as img/me.jpg, then replace the .avatar--mono div in index.html with <img class="avatar" src="img/me.jpg" alt="Nikolaos" />.
+Film backdrops in img/posters/ are pulled from Letterboxd.
