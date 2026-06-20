@@ -141,6 +141,26 @@ a:hover { border-bottom-color: var(--accent); }
   line-height: 2;
 }
 
+/* ===== Films ===== */
+.films {
+  list-style: none;
+  margin: 0.8rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.4rem;
+}
+
+.films li::before {
+  content: "▸ ";
+  color: var(--muted);
+}
+
+.films span {
+  color: var(--muted);
+  font-size: 0.85em;
+}
+
 /* ===== Footer ===== */
 footer {
   margin-top: 4rem;
