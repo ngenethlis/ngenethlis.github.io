@@ -1,13 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect x="0.5" y="0.5" width="31" height="31" rx="7" fill="#fdf6ec" stroke="#c0432f" stroke-width="1.5"/>
-  <g fill="#1a1a1a">
-    <rect x="4"  y="4"  width="6" height="6"/>
-    <rect x="16" y="4"  width="6" height="6"/>
-    <rect x="10" y="10" width="6" height="6"/>
-    <rect x="22" y="10" width="6" height="6"/>
-    <rect x="4"  y="16" width="6" height="6"/>
-    <rect x="16" y="16" width="6" height="6"/>
-    <rect x="10" y="22" width="6" height="6"/>
-    <rect x="22" y="22" width="6" height="6"/>
+  <rect x="1" y="1" width="30" height="30" rx="7" fill="#181612"/>
+  <rect x="10.24" y="10.24" width="11.52" height="11.52" rx="1.1" fill="#c0432f"/>
+  <g fill="#f5f0e8">
+    <!-- top pins -->
+    <rect x="11.36" y="6.4" width="1.44" height="3.84"/>
+    <rect x="16.16" y="6.4" width="1.44" height="3.84"/>
+    <rect x="20.96" y="6.4" width="1.44" height="3.84"/>
+    <!-- bottom pins -->
+    <rect x="11.36" y="21.76" width="1.44" height="3.84"/>
+    <rect x="16.16" y="21.76" width="1.44" height="3.84"/>
+    <rect x="20.96" y="21.76" width="1.44" height="3.84"/>
+    <!-- left pins -->
+    <rect x="6.4" y="11.36" width="3.84" height="1.44"/>
+    <rect x="6.4" y="16.16" width="3.84" height="1.44"/>
+    <rect x="6.4" y="20.96" width="3.84" height="1.44"/>
+    <!-- right pins -->
+    <rect x="21.76" y="11.36" width="3.84" height="1.44"/>
+    <rect x="21.76" y="16.16" width="3.84" height="1.44"/>
+    <rect x="21.76" y="20.96" width="3.84" height="1.44"/>
   </g>
 </svg>
