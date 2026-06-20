@@ -258,16 +258,6 @@ a:hover { border-bottom-color: var(--accent); }
   transition: transform 0.16s, box-shadow 0.16s;
 }
 
-/* ===== Footer ===== */
-footer {
-  margin-top: 3.5rem;
-  padding-top: 1.2rem;
-  border-top: 1px solid var(--line);
-  font-family: "JetBrains Mono", ui-monospace, monospace;
-  font-size: 0.72rem;
-  color: var(--muted);
-}
-
 /* ===== Responsive ===== */
 @media (max-width: 720px) {
   main { padding: 6vh 22px 8vh; }
