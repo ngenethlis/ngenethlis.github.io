@@ -23,7 +23,10 @@
         <h1>nikolaos genethlis</h1>
 
         <figure class="banner">
-          <img src="https://media1.giphy.com/media/oNJ3am00JCroA/giphy.gif" alt="egg of the king" loading="lazy" />
+          <button class="banner__btn" type="button" aria-label="play a song i like" onclick="playSong(this)">
+            <img src="https://media1.giphy.com/media/oNJ3am00JCroA/giphy.gif" alt="egg of the king" loading="lazy" />
+            <span class="banner__hint"><i class="fa-solid fa-play"></i> a song i like</span>
+          </button>
         </figure>
 
         <p class="meta"><strong>interests:</strong> low-latency systems, networking, cpu microarchitecture, distributed systems</p>
@@ -116,5 +119,20 @@
       <p>london, uk · made with plain html/css · hosted on github pages</p>
     </footer>
   </main>
+
+  <script>
+    // Click the egg gif to play a song i like (iron maiden – transylvania)
+    function playSong(btn) {
+      var fig = btn.closest('.banner');
+      var f = document.createElement('iframe');
+      f.className = 'banner__yt';
+      f.src = 'https://www.youtube.com/embed/7VyPuQXrDsI?autoplay=1&rel=0';
+      f.title = 'Iron Maiden – Transylvania';
+      f.allow = 'autoplay; encrypted-media';
+      f.setAttribute('allowfullscreen', '');
+      fig.innerHTML = '';
+      fig.appendChild(f);
+    }
+  </script>
 </body>
 </html>
