@@ -121,7 +121,8 @@
   </main>
 
   <script>
-    // Click the egg gif to play a song i like (iron maiden – transylvania)
+    // Click the egg gif to play a song i like (iron maiden – transylvania).
+    // Note: YouTube embeds only play from a real https domain, not localhost/file://.
     function playSong(btn) {
       var fig = btn.closest('.banner');
       var f = document.createElement('iframe');
