@@ -16,158 +16,104 @@
 </head>
 <body>
   <main>
-    <!-- ===== Header / About ===== -->
-    <header class="intro">
-      <!-- PLACEHOLDER PHOTO: replace the monogram div with
-           <img class="avatar" src="img/me.jpg" alt="Nikolaos" /> once you add a photo -->
-      <div class="avatar avatar--mono">NG</div>
+    <div class="grid">
 
-      <h1>nikolaos genethlis <span class="wave">👋</span></h1>
-      <p class="tagline">software engineer · low-latency systems, networking &amp; computer architecture</p>
-      <p class="blurb">
-        final-year computer science meng at <a href="https://www.ucl.ac.uk/" target="_blank" rel="noopener">ucl</a>,
-        based in london, originally from cyprus 🇨🇾. i like working close to the metal —
-        high-performance c++, kernel-bypass networking, cpu microarchitecture — and shipping
-        full-stack features end to end. just wrapped up my meng dissertation on fermi–hubbard
-        circuit verification at <a href="https://www.phasecraft.io/" target="_blank" rel="noopener">phasecraft</a>.
-      </p>
+      <!-- ============ LEFT COLUMN ============ -->
+      <aside class="col-left">
+        <h1>nikolaos genethlis</h1>
 
-      <figure class="gif">
-        <img src="https://media1.giphy.com/media/oNJ3am00JCroA/giphy.gif" alt="egg of the king" loading="lazy" />
-        <figcaption>egg of the king 👑</figcaption>
-      </figure>
+        <figure class="banner">
+          <img src="https://media1.giphy.com/media/oNJ3am00JCroA/giphy.gif" alt="egg of the king" loading="lazy" />
+          <figcaption>egg of the king 👑</figcaption>
+        </figure>
 
-      <nav class="socials">
-        <a href="mailto:ngenethlis@gmail.com"><i class="fa-solid fa-envelope"></i> email</a>
-        <a href="https://github.com/ngenethlis" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> github</a>
-        <a href="https://linkedin.com/in/ngenethlis" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> linkedin</a>
-        <a href="resume.pdf" target="_blank" rel="noopener"><i class="fa-solid fa-file-lines"></i> cv</a>
-      </nav>
-    </header>
+        <p class="meta"><strong>interests:</strong> low-latency systems, networking, cpu microarchitecture, distributed systems</p>
+        <p class="meta"><strong>stack:</strong> c++, c, python, rust, typescript, react, dpdk, linux, docker</p>
+        <p class="meta"><strong>based in:</strong> london, uk · from cyprus 🇨🇾</p>
+      </aside>
 
-    <!-- ===== Experience ===== -->
-    <section>
-      <h2 data-emoji="💼">experience</h2>
-      <ul class="timeline">
-        <li style="--dot: var(--c-coral)">
-          <span class="when">2026 —</span>
-          <span class="what">
-            <strong>software engineer</strong> (part-time) @
-            <a href="https://tild-tech.com/" target="_blank" rel="noopener">tild</a> —
-            built an in-app ai assistant on google gemini with function-calling tools that
-            edit tasks and fetch posts from plain-language requests, plus a gantt view for
-            task scheduling across the react / typescript app (redux toolkit, mui, capacitor).
-          </span>
-        </li>
-        <li style="--dot: var(--c-teal)">
-          <span class="when">2025</span>
-          <span class="what">
-            <strong>c++ software engineer intern</strong> @
-            <a href="https://www.squarepoint-capital.com/" target="_blank" rel="noopener">squarepoint capital</a> —
-            extended a low-latency network profiler to real-time packet analysis at up to
-            40gb/s, implemented dpdk kernel bypass for a 50% throughput gain, and wrote
-            custom tcp/icmp filters in c.
-          </span>
-        </li>
-        <li style="--dot: var(--c-blue)">
-          <span class="when">2024</span>
-          <span class="what">
-            <strong>software engineer intern</strong> @
-            <a href="https://www.arm.com/" target="_blank" rel="noopener">arm</a> —
-            wrote arm64 micro-benchmarks to detect data memory-dependent prefetchers across
-            10+ cpus, tracing side-channel vulnerabilities (augury, gofetch, spectre) to
-            inform secure-prefetcher design.
-          </span>
-        </li>
-      </ul>
-    </section>
+      <!-- ============ RIGHT COLUMN ============ -->
+      <section class="col-right">
 
-    <!-- ===== Education ===== -->
-    <section>
-      <h2 data-emoji="🎓">education</h2>
-      <ul class="timeline">
-        <li style="--dot: var(--c-purple)">
-          <span class="when">2022–26</span>
-          <span class="what">
-            <strong>computer science meng (hons)</strong>,
-            <a href="https://www.ucl.ac.uk/" target="_blank" rel="noopener">university college london</a>
-            — first-class average (79 / 76 / 77%). academic merit scholarship from the
-            government of cyprus. modules across systems, networks, algorithms and security.
-          </span>
-        </li>
-        <li style="--dot: var(--c-mustard)">
-          <span class="when">2014–21</span>
-          <span class="what">
-            <strong>high school diploma</strong>,
-            <a href="https://www.englishschool.ac.cy/" target="_blank" rel="noopener">the english school nicosia</a>
-            — apolytirion 20/20; a* in further maths, maths &amp; physics. headmaster's award (top 1%).
-          </span>
-        </li>
-      </ul>
-    </section>
+        <nav class="socials">
+          <a href="mailto:ngenethlis@gmail.com"><i class="fa-solid fa-envelope"></i> email</a>;
+          <a href="https://github.com/ngenethlis" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> github</a>;
+          <a href="https://linkedin.com/in/ngenethlis" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> linkedin</a>;
+          <a href="resume.pdf" target="_blank" rel="noopener"><i class="fa-solid fa-file-lines"></i> cv</a>;
+        </nav>
 
-    <!-- ===== Projects ===== -->
-    <section>
-      <h2 data-emoji="🛠️">projects</h2>
-      <div class="cards">
-        <a class="card" href="https://github.com/ngenethlis/ich25" target="_blank" rel="noopener" style="--accent: var(--c-coral)">
-          <h3>incite <span class="badge">🏆 1st place · ic hack 2025</span></h3>
-          <p>ai-powered citation mapping that flags conflicts of interest and assesses research methodology. built the react front end and wired in nlp models.</p>
-        </a>
-        <div class="card" style="--accent: var(--c-teal)">
-          <h3>motion input</h3>
-          <p>dysarthric speech-to-text model and a c++ mfc windows app for the nhs to make gaming and patient communication more accessible (ucl systems engineering).</p>
+        <p class="edu-line">
+          <strong>meng cs '26</strong> @ <a href="https://www.ucl.ac.uk/" target="_blank" rel="noopener">ucl</a>
+          — first-class · academic merit scholarship · just wrapped my dissertation at
+          <a href="https://www.phasecraft.io/" target="_blank" rel="noopener">phasecraft</a>
+        </p>
+
+        <!-- Experience with portrait floated right -->
+        <div class="exp-block">
+          <!-- PORTRAIT: replace the .portrait--ph div with
+               <img class="portrait" src="img/me.jpg" alt="Nikolaos" /> once you add a photo -->
+          <div class="portrait portrait--ph"><span>your<br>photo</span></div>
+
+          <p class="mini"><span class="dot" style="background:var(--c-coral)"></span> experience</p>
+          <ul class="bullets">
+            <li>
+              <span class="line">swe @ <a href="https://tild-tech.com/" target="_blank" rel="noopener">tild</a> <span class="yr">(26)</span></span>
+              <span class="sub">in-app gemini ai assistant + gantt view across the react / typescript app</span>
+            </li>
+            <li>
+              <span class="line">c++ swe intern @ <a href="https://www.squarepoint-capital.com/" target="_blank" rel="noopener">squarepoint</a> <span class="yr">(25)</span></span>
+              <span class="sub">low-latency network profiler; dpdk kernel bypass for +50% throughput at 40gb/s</span>
+            </li>
+            <li>
+              <span class="line">swe intern @ <a href="https://www.arm.com/" target="_blank" rel="noopener">arm</a> <span class="yr">(24)</span></span>
+              <span class="sub">arm64 micro-benchmarks tracing cpu prefetcher side-channels (augury, gofetch, spectre)</span>
+            </li>
+          </ul>
         </div>
-        <a class="card" href="https://www.phasecraft.io/" target="_blank" rel="noopener" style="--accent: var(--c-purple)">
-          <h3>fermi–hubbard circuit verification <span class="badge">meng dissertation · 2026</span></h3>
-          <p>verifying quantum circuits, completed at phasecraft.</p>
-        </a>
-      </div>
-    </section>
 
-    <!-- ===== Skills ===== -->
-    <section>
-      <h2 data-emoji="⚙️">skills</h2>
-      <div class="tags">
-        <span>c++</span><span>c</span><span>python</span><span>typescript</span><span>javascript</span>
-        <span>rust</span><span>java</span><span>haskell</span><span>arm64 / x86 asm</span>
-        <span>react</span><span>redux</span><span>node.js</span><span>dpdk</span><span>pandas</span><span>numpy</span>
-        <span>linux</span><span>git</span><span>docker</span><span>gdb/lldb</span><span>cmake</span><span>vite</span><span>jest</span><span>ci/cd</span>
-      </div>
-    </section>
+        <!-- Letterboxd -->
+        <p class="mini">
+          <i class="fa-solid fa-clapperboard" style="color:#ff8000"></i>
+          <a href="https://letterboxd.com/ngene/" target="_blank" rel="noopener">letterboxd</a> enthusiast, my top four
+        </p>
+        <div class="posters">
+          <a class="poster" href="https://letterboxd.com/film/the-lord-of-the-rings-the-return-of-the-king/" target="_blank" rel="noopener" title="The Return of the King (extended)">
+            <img src="img/posters/rotk.jpg" alt="The Return of the King" loading="lazy" />
+          </a>
+          <a class="poster" href="https://letterboxd.com/film/blade-runner/" target="_blank" rel="noopener" title="Blade Runner">
+            <img src="img/posters/blade-runner.png" alt="Blade Runner" loading="lazy" />
+          </a>
+          <a class="poster" href="https://letterboxd.com/film/paths-of-glory/" target="_blank" rel="noopener" title="Paths of Glory">
+            <img src="img/posters/paths-of-glory.jpg" alt="Paths of Glory" loading="lazy" />
+          </a>
+          <a class="poster" href="https://letterboxd.com/film/perfect-blue/" target="_blank" rel="noopener" title="Perfect Blue">
+            <img src="img/posters/perfect-blue.png" alt="Perfect Blue" loading="lazy" />
+          </a>
+        </div>
 
-    <!-- ===== Off the clock ===== -->
-    <section>
-      <h2 data-emoji="✨">off the clock</h2>
-      <p class="hobbies">
-        <span class="hobby" style="--accent: var(--c-coral)">🏎️ formula 1</span>
-        <span class="hobby" style="--accent: var(--c-teal)">🏋️ powerlifting</span>
-        <span class="hobby" style="--accent: var(--c-mustard)">🎬 films</span>
-      </p>
+        <!-- Projects -->
+        <p class="mini"><span class="dot" style="background:var(--c-teal)"></span> projects</p>
+        <ul class="bullets">
+          <li>
+            <span class="line"><a href="https://github.com/ngenethlis/ich25" target="_blank" rel="noopener">incite</a> <span class="yr">(25)</span> · 🏆 1st place, ic hack 2025</span>
+            <span class="sub">ai citation mapping that flags conflicts of interest; react front end + nlp models</span>
+          </li>
+          <li>
+            <span class="line">motion input</span>
+            <span class="sub">dysarthric speech-to-text model + a c++ mfc windows app for the nhs</span>
+          </li>
+          <li>
+            <span class="line">fermi–hubbard circuit verification</span>
+            <span class="sub">meng dissertation on verifying quantum circuits, at phasecraft</span>
+          </li>
+        </ul>
 
-      <p class="lb-label">
-        <i class="fa-solid fa-clapperboard"></i> my
-        <a href="https://letterboxd.com/ngene/" target="_blank" rel="noopener">letterboxd</a> top four:
-      </p>
-      <div class="posters">
-        <a class="poster" href="https://letterboxd.com/film/the-lord-of-the-rings-the-return-of-the-king/" target="_blank" rel="noopener">
-          <img src="img/posters/rotk.jpg" alt="The Return of the King" loading="lazy" />
-          <span class="poster__cap"><strong>the return of the king</strong><em>extended · 2003</em></span>
-        </a>
-        <a class="poster" href="https://letterboxd.com/film/blade-runner/" target="_blank" rel="noopener">
-          <img src="img/posters/blade-runner.jpg" alt="Blade Runner" loading="lazy" />
-          <span class="poster__cap"><strong>blade runner</strong><em>1982</em></span>
-        </a>
-        <a class="poster" href="https://letterboxd.com/film/paths-of-glory/" target="_blank" rel="noopener">
-          <img src="img/posters/paths-of-glory.jpg" alt="Paths of Glory" loading="lazy" />
-          <span class="poster__cap"><strong>paths of glory</strong><em>1957</em></span>
-        </a>
-        <a class="poster" href="https://letterboxd.com/film/perfect-blue/" target="_blank" rel="noopener">
-          <img src="img/posters/perfect-blue.jpg" alt="Perfect Blue" loading="lazy" />
-          <span class="poster__cap"><strong>perfect blue</strong><em>1997</em></span>
-        </a>
-      </div>
-    </section>
+        <!-- Off the clock -->
+        <p class="mini"><span class="dot" style="background:var(--c-mustard)"></span> off the clock</p>
+        <p class="bullets-inline">🏎️ formula 1 · 🏋️ powerlifting · 🎬 films</p>
+
+      </section>
+    </div>
 
     <footer>
       <p>london, uk · made with plain html/css · hosted on github pages</p>
