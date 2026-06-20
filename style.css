@@ -222,6 +222,11 @@ a:hover { border-bottom-color: var(--accent); }
   font-size: 0.78rem;
   color: var(--muted);
 }
+.bullets .ctx {
+  font-size: 0.78rem;
+  font-style: italic;
+  color: var(--muted);
+}
 .bullets .sub {
   display: block;
   font-size: 0.85rem;
