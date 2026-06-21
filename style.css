@@ -337,7 +337,12 @@ a:hover { border-bottom-color: var(--accent); }
   text-shadow: none;
 }
 .crt__list li:hover .crt__cmd { opacity: 1; }
-.crt__list li:hover .crt__note { display: inline; color: #0a3a1f; }
+.crt__list li:hover .crt__note {
+  display: block;
+  color: #0a3a1f;
+  padding-left: 1.1rem;
+  white-space: normal;
+}
 
 .crt__prompt {
   display: flex;
