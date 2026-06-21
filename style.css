@@ -361,6 +361,58 @@ a:hover { border-bottom-color: var(--accent); }
 }
 
 /* ===== Posters ===== */
+/* ===== Letterboxd: last watched ===== */
+.lb-recent {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+  margin: 0 0 1.1rem;
+  padding: 0.6rem;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--bg-soft);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  color: var(--fg);
+}
+.lb-recent[hidden] { display: none; }
+.lb-recent:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.09);
+  transition: transform 0.14s, box-shadow 0.14s;
+  border-color: var(--accent);
+}
+.lb-recent__poster {
+  flex: 0 0 auto;
+  width: 46px;
+  height: 69px;
+  object-fit: cover;
+  border-radius: 5px;
+  background: var(--line);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+}
+.lb-recent__body { display: flex; flex-direction: column; gap: 0.1rem; min-width: 0; }
+.lb-recent__label {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+.lb-recent__title { font-weight: 600; font-size: 0.92rem; }
+.lb-recent__meta {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.lb-sub {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin: 0 0 0.7rem;
+}
+
 .posters {
   display: grid;
   grid-template-columns: repeat(4, 1fr);

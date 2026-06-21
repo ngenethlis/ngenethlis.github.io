@@ -115,8 +115,20 @@
         <!-- Letterboxd -->
         <p class="mini">
           <i class="fa-solid fa-clapperboard" style="color:#ff8000"></i>
-          <a href="https://letterboxd.com/ngene/" target="_blank" rel="noopener">Letterboxd</a> enthusiast, my top four
+          <a href="https://letterboxd.com/ngene/" target="_blank" rel="noopener">Letterboxd</a> enthusiast
         </p>
+
+        <!-- Recently watched (auto-updated from Letterboxd RSS via GitHub Action) -->
+        <a class="lb-recent" id="lb-recent" href="https://letterboxd.com/ngene/" target="_blank" rel="noopener" hidden>
+          <img class="lb-recent__poster" alt="" loading="lazy" />
+          <span class="lb-recent__body">
+            <span class="lb-recent__label">Last watched</span>
+            <span class="lb-recent__title"></span>
+            <span class="lb-recent__meta"></span>
+          </span>
+        </a>
+
+        <p class="lb-sub">My top four</p>
         <div class="posters">
           <a class="poster" href="https://letterboxd.com/film/the-lord-of-the-rings-the-return-of-the-king/" target="_blank" rel="noopener" title="The Return of the King (extended)">
             <img src="img/posters/rotk.jpg" alt="The Return of the King" loading="lazy" />
@@ -172,6 +184,30 @@
       // Clear the opened ball out of the layout once it has burst.
       setTimeout(function () { if (btn.parentNode) btn.parentNode.removeChild(btn); }, 1000);
     }
+
+    // Last watched film, read from a same-origin JSON refreshed by a scheduled GitHub Action.
+    fetch('letterboxd-last.json', { cache: 'no-cache' })
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
+      .then(function (d) {
+        var el = document.getElementById('lb-recent');
+        if (!el || !d || !d.title) return;
+        if (d.link) el.href = d.link;
+        var img = el.querySelector('.lb-recent__poster');
+        if (d.poster) { img.src = d.poster; img.alt = d.title + ' poster'; }
+        el.querySelector('.lb-recent__title').textContent =
+          d.title + (d.year ? ' (' + d.year + ')' : '');
+        var bits = [];
+        if (d.ratingStars) bits.push(d.ratingStars);
+        if (d.liked) bits.push('♥');
+        if (d.watchedDate) {
+          var t = new Date(d.watchedDate + 'T00:00:00');
+          bits.push(isNaN(t) ? d.watchedDate : t.toLocaleDateString('en-GB',
+            { day: 'numeric', month: 'short', year: 'numeric' }));
+        }
+        el.querySelector('.lb-recent__meta').textContent = bits.join(' · ');
+        el.hidden = false;
+      })
+      .catch(function () { /* leave the card hidden if the feed JSON is unavailable */ });
   </script>
 </body>
 </html>
