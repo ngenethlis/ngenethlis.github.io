@@ -328,19 +328,16 @@ a:hover { border-bottom-color: var(--accent); }
   padding: 0.22rem 0.7rem;
   cursor: default;
   transition: background 0.1s, color 0.1s;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 .crt__cmd { opacity: 0.7; margin-right: 0.2rem; }
-.crt__note { color: #2f9a5e; opacity: 0; transition: opacity 0.15s; }
+.crt__note { display: none; color: #2f9a5e; }
 .crt__list li:hover {
   background: #45f08a;
   color: #07140c;
   text-shadow: none;
 }
 .crt__list li:hover .crt__cmd { opacity: 1; }
-.crt__list li:hover .crt__note { color: #0a3a1f; opacity: 1; }
+.crt__list li:hover .crt__note { display: inline; color: #0a3a1f; }
 
 .crt__prompt {
   display: flex;
