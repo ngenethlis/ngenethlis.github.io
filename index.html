@@ -27,11 +27,26 @@
         <h1>Nikolaos Genethlis</h1>
 
         <figure class="banner">
-          <button class="banner__btn" type="button" aria-label="Play a song I like" onclick="playSong(this)">
-            <img src="https://media1.giphy.com/media/oNJ3am00JCroA/giphy.gif" alt="Egg of the King" loading="lazy" />
-            <span class="banner__hint"><i class="fa-solid fa-play"></i> A song I like</span>
-          </button>
+          <img src="https://media1.giphy.com/media/oNJ3am00JCroA/giphy.gif" alt="Egg of the King" loading="lazy" />
         </figure>
+
+        <div class="player">
+          <button class="pokeball" type="button" aria-label="Open the Poké Ball to play a song I like" onclick="playSong(this)">
+            <svg viewBox="0 0 64 64" aria-hidden="true">
+              <g class="pb-top">
+                <path d="M2 32 A30 30 0 0 1 62 32 Z" fill="#c0432f" stroke="#181612" stroke-width="3" stroke-linejoin="round" />
+              </g>
+              <g class="pb-bottom">
+                <path d="M2 32 A30 30 0 0 0 62 32 Z" fill="#fdf6ec" stroke="#181612" stroke-width="3" stroke-linejoin="round" />
+              </g>
+              <g class="pb-center">
+                <circle cx="32" cy="32" r="9" fill="#181612" />
+                <circle cx="32" cy="32" r="5" fill="#fdf6ec" />
+              </g>
+            </svg>
+          </button>
+          <span class="player__hint">click to play a song i like ♪</span>
+        </div>
 
         <p class="meta"><strong>Interests:</strong> low-latency systems, networking, CPU microarchitecture, distributed systems</p>
         <p class="meta"><strong>Stack:</strong> C++, C, Python, Rust, TypeScript, React, DPDK, Linux, Docker</p>
@@ -125,18 +140,23 @@
   </main>
 
   <script>
-    // Click the egg gif to play a song i like (iron maiden – transylvania).
+    // Click the poké ball to open it and play a song i like (iron maiden – transylvania).
     // Note: YouTube embeds only play from a real https domain, not localhost/file://.
     function playSong(btn) {
-      var fig = btn.closest('.banner');
+      var box = btn.closest('.player');
+      if (!box || box.classList.contains('open')) return;
+      box.classList.add('open');
+      btn.disabled = true;
+      // Inject the player immediately so the music isn't gated on the open animation.
       var f = document.createElement('iframe');
-      f.className = 'banner__yt';
+      f.className = 'player__yt';
       f.src = 'https://www.youtube.com/embed/dCniHBtx3ms?autoplay=1&rel=0';
       f.title = 'Iron Maiden – Transylvania';
       f.allow = 'autoplay; encrypted-media';
       f.setAttribute('allowfullscreen', '');
-      fig.innerHTML = '';
-      fig.appendChild(f);
+      box.appendChild(f);
+      // Clear the opened ball out of the layout once it has burst.
+      setTimeout(function () { if (btn.parentNode) btn.parentNode.removeChild(btn); }, 1000);
     }
   </script>
 </body>
