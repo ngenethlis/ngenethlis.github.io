@@ -1,0 +1,31 @@
+{
+  "profile": "https://hardcover.app/@ngenethlis",
+  "reading": [
+    {
+      "title": "Flowers for Algernon",
+      "year": 1959,
+      "authors": [
+        "Daniel Keyes"
+      ],
+      "rating": null,
+      "ratingStars": "",
+      "startedDate": "2026-11-17",
+      "finishedDate": null,
+      "link": "https://hardcover.app/books/flowers-for-algernon",
+      "cover": "https://assets.hardcover.app/edition/116801/3d46aa36-501a-4609-a744-1500713078f9.jpg"
+    }
+  ],
+  "lastRead": {
+    "title": "The Naked Lunch",
+    "year": 1959,
+    "authors": [
+      "William S. Burroughs"
+    ],
+    "rating": 3.5,
+    "ratingStars": "★★★½",
+    "startedDate": null,
+    "finishedDate": "2026-11-10",
+    "link": "https://hardcover.app/books/the-naked-lunch",
+    "cover": "https://assets.hardcover.app/edition/3899749/f105ee75178322d49025760a3a74d153a28b7911.jpeg"
+  }
+}

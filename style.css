@@ -453,3 +453,7 @@ a:hover { border-bottom-color: var(--accent); }
   .posters { grid-template-columns: repeat(2, 1fr); gap: 0.6rem; }
   .portrait { width: 100px; }
 }
+
+/* ===== Hardcover: reading now / last read (reuses the .lb-recent card) ===== */
+.hc-books[hidden] { display: none; }
+.hc-books .lb-recent { margin: 0.6rem 0; }

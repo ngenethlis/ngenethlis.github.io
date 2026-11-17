@@ -166,6 +166,15 @@
           </span>
         </a>
 
+        <!-- Books (auto-updated from the Hardcover API via GitHub Action) -->
+        <div class="hc-books" id="hc-books" hidden>
+          <p class="mini">
+            <i class="fa-solid fa-book" style="color:#6466f1"></i>
+            <a href="https://hardcover.app/@ngenethlis" target="_blank" rel="noopener">Hardcover</a> reader
+          </p>
+          <div id="hc-cards"></div>
+        </div>
+
       </section>
     </div>
   </main>
@@ -213,6 +222,54 @@
         el.hidden = false;
       })
       .catch(function () { /* leave the card hidden if the feed JSON is unavailable */ });
+
+    // Currently reading + last read book, from a JSON refreshed by a scheduled GitHub Action.
+    function fmtDate(s) {
+      var t = new Date(s + 'T00:00:00');
+      return isNaN(t) ? s : t.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+    }
+    function bookCard(label, b, profile) {
+      var a = document.createElement('a');
+      a.className = 'lb-recent';
+      a.href = b.link || profile;
+      a.target = '_blank';
+      a.rel = 'noopener';
+      var img = document.createElement('img');
+      img.className = 'lb-recent__poster';
+      img.loading = 'lazy';
+      img.alt = b.cover ? b.title + ' cover' : '';
+      if (b.cover) img.src = b.cover;
+      var body = document.createElement('span');
+      body.className = 'lb-recent__body';
+      var meta = [];
+      if (b.authors && b.authors.length) meta.push(b.authors.join(', '));
+      if (b.ratingStars) meta.push(b.ratingStars);
+      if (b.finishedDate && label === 'Last read') meta.push(fmtDate(b.finishedDate));
+      [['lb-recent__label', label], ['lb-recent__title', b.title], ['lb-recent__meta', meta.join(' · ')]]
+        .forEach(function (p) {
+          var s = document.createElement('span');
+          s.className = p[0];
+          s.textContent = p[1];
+          body.appendChild(s);
+        });
+      a.appendChild(img);
+      a.appendChild(body);
+      return a;
+    }
+    fetch('hardcover-last.json', { cache: 'no-cache' })
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
+      .then(function (d) {
+        var wrap = document.getElementById('hc-books');
+        var cards = document.getElementById('hc-cards');
+        if (!wrap || !d) return;
+        var profile = d.profile || 'https://hardcover.app/@ngenethlis';
+        (d.reading || []).forEach(function (b) {
+          if (b && b.title) cards.appendChild(bookCard('Reading now', b, profile));
+        });
+        if (d.lastRead && d.lastRead.title) cards.appendChild(bookCard('Last read', d.lastRead, profile));
+        if (cards.children.length) wrap.hidden = false;
+      })
+      .catch(function () { /* leave the section hidden if the JSON is unavailable */ });
   </script>
 </body>
 </html>
