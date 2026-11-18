@@ -117,6 +117,17 @@
           </ul>
         </div>
 
+        <!-- Currently working on: latest repo pushed to on GitHub (fetched client-side).
+             To pin a specific repo instead, set data-repo="ngenethlis/<repo>". -->
+        <a class="lb-recent gh-now" id="gh-now" data-repo="" href="https://github.com/ngenethlis" target="_blank" rel="noopener" hidden>
+          <span class="gh-now__icon"><i class="fa-brands fa-github"></i></span>
+          <span class="lb-recent__body">
+            <span class="lb-recent__label">Currently working on</span>
+            <span class="lb-recent__title"></span>
+            <span class="lb-recent__meta"></span>
+          </span>
+        </a>
+
         <!-- Projects -->
         <p class="mini"><span class="dot" style="background:var(--c-teal)"></span> Projects</p>
         <ul class="bullets">
@@ -222,6 +233,60 @@
         el.hidden = false;
       })
       .catch(function () { /* leave the card hidden if the feed JSON is unavailable */ });
+
+    // Currently working on: a pinned repo (data-repo), else the most recently pushed
+    // non-fork repo. The site repo is skipped since bots push to it every few hours.
+    (function () {
+      var el = document.getElementById('gh-now');
+      if (!el) return;
+      var pinned = el.getAttribute('data-repo');
+      var url = pinned
+        ? 'https://api.github.com/repos/' + pinned
+        : 'https://api.github.com/users/ngenethlis/repos?sort=pushed&per_page=10';
+      fetch(url)
+        .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
+        .then(function (d) {
+          var repo = pinned ? d : (d || []).filter(function (r) {
+            return !r.fork && !r.archived && r.name !== 'ngenethlis.github.io';
+          })[0];
+          if (!repo || !repo.name) return;
+          el.href = repo.html_url;
+          el.querySelector('.lb-recent__title').textContent = repo.name;
+          var bits = [];
+          if (repo.description) bits.push(repo.description);
+          if (repo.language) bits.push(repo.language);
+          var days = Math.floor((Date.now() - new Date(repo.pushed_at)) / 86400000);
+          if (!isNaN(days)) bits.push('pushed ' + (days < 1 ? 'today' : days === 1 ? 'yesterday' : days + ' days ago'));
+          el.querySelector('.lb-recent__meta').textContent = bits.join(' · ');
+          el.hidden = false;
+          useRepoLogo(el.querySelector('.gh-now__icon'), repo);
+        })
+        .catch(function () { /* leave the card hidden if GitHub is unavailable or rate-limited */ });
+
+      // Swap the GitHub icon for the repo's logo if it has one: either a file at
+      // assets/logo.* or a square icon inside an assets/logo/ folder.
+      function useRepoLogo(box, repo) {
+        var base = 'https://raw.githubusercontent.com/' + repo.full_name + '/' +
+          (repo.default_branch || 'main') + '/assets/';
+        var n = repo.name;
+        var paths = [
+          'logo/' + n + '-icon-128.png', 'logo/' + n + '-icon.png', 'logo/' + n + '-icon.svg',
+          'logo/icon.png', 'logo/icon.svg', 'logo/logo.png', 'logo/logo.svg',
+          'logo.png', 'logo.svg', 'logo.jpg', 'logo.webp'
+        ];
+        (function tryNext(i) {
+          if (i >= paths.length) return;
+          var img = new Image();
+          img.onload = function () {
+            img.className = 'gh-now__logo';
+            img.alt = repo.name + ' logo';
+            box.replaceWith(img);
+          };
+          img.onerror = function () { tryNext(i + 1); };
+          img.src = base + paths[i];
+        })(0);
+      }
+    })();
 
     // Currently reading + last read book, from a JSON refreshed by a scheduled GitHub Action.
     function fmtDate(s) {
